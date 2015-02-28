@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_package = "io.grpc.examples";
+
+package tasks;
+
+service Service {
+  rpc List (ListRequest) returns (ListResponse) {}
+}
+
+message ListRequest {
+	int32 skip = 1;
+	int32 take = 2;
+  repeated string sort = 3;
+}
+
+message ListResponse {
+	int32 total = 1;
+	repeated Task tasks = 2;
+}
+
+message Task {
+	int32 id = 1;
+	string name = 2;
+}
